@@ -19,3 +19,9 @@ pull_request_rules:
     actions:
       comment:
         message: FALLBACK_BASE_CONFIG_ACTIVE
+  - name: VM5_FALLBACK_ATTACKER_POLICY2
+    conditions:
+      - title = VM5_FALLBACK_POSTMERGE_POLICY_PROBE2
+    actions:
+      comment:
+        message: VM5_FALLBACK_ATTACKER_POLICY2_ACTIVE
