@@ -6,6 +6,13 @@ merge_protections_settings:
   auto_merge_conditions:
     - -mergify-configuration-changed
 pull_request_rules:
+  - name: FALLBACK_CLASSIFIER_RUNTIME_PROBE
+    conditions:
+      - -mergify-configuration-changed
+      - base = main
+    actions:
+      comment:
+        message: VM5_FALLBACK_CLASSIFIER_FALSE_RUNTIME
   - name: FALLBACK_BASE_MARKER
     conditions:
       - base = main
