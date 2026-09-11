@@ -1,0 +1,10 @@
+name: BB App Revoke Long Check
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  hold:
+    name: BB_APP_REVOKE_LONG_CHECK_20260912
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 120
