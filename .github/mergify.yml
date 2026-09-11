@@ -1,0 +1,14 @@
+merge_protections:
+  - name: FALLBACK_ALWAYS_ALLOW_CONTROL
+    if: true
+    success_conditions: true
+merge_protections_settings:
+  auto_merge_conditions:
+    - -mergify-configuration-changed
+pull_request_rules:
+  - name: FALLBACK_BASE_MARKER
+    conditions:
+      - base = main
+    actions:
+      comment:
+        message: FALLBACK_BASE_CONFIG_ACTIVE
