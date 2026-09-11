@@ -1,5 +1,0 @@
-queue_rules:
-  - name: default
-    queue_conditions: []
-    merge_conditions:
-      - check-success = BB_APP_REVOKE_LONG_CHECK_20260912
