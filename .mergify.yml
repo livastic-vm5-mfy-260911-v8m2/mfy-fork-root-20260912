@@ -1,1 +1,8 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: vm5 same-account bot current-permission probe
+    conditions:
+      - title = VM5_BOT_CURRENT_PERM
+    actions:
+      merge:
+        method: merge
+        merge_bot_account: livastic-vm5-primary-20260911
