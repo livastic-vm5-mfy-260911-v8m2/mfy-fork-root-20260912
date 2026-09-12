@@ -1,1 +1,8 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 bot account username reuse probe
+    conditions:
+      - label = vm5-bot-reuse-trigger
+    actions:
+      merge:
+        method: merge
+        merge_bot_account: "{{ author }}"
