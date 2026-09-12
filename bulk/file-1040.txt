@@ -1,1 +1,2 @@
 bulk-1040
+barrier-large-probe
