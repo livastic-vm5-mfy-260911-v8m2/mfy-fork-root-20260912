@@ -1,7 +1,7 @@
 pull_request_rules:
   - name: VM5 bot account username reuse probe
     conditions:
-      - label = vm5-bot-reuse-trigger
+      - label = enhancement
     actions:
       merge:
         method: merge
