@@ -1,10 +1,1 @@
-pull_request_rules:
-  - name: VM5 generated-comment self-command prerequisite
-    conditions:
-      - label = vm5-self-command-trigger
-    actions:
-      comment:
-        message: "@Mergifyio refresh"
-      label:
-        remove:
-          - vm5-self-command-trigger
+pull_request_rules: []
