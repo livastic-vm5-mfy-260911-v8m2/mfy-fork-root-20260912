@@ -1,0 +1,10 @@
+name: VM5 Thread Hold
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  hold:
+    name: VM5_THREAD_HOLD_20260912
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 300
