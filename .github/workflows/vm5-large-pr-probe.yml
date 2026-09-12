@@ -1,0 +1,49 @@
+name: vm5-large-pr-probe
+
+on:
+  push:
+    branches:
+      - bb-large-files-260912
+
+permissions:
+  contents: write
+  checks: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate large PR and adversarial check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ -f .large-pr-generated ]; then
+            exit 0
+          fi
+          mkdir -p bulk zzzz-sensitive
+          for i in $(seq -w 1 3105); do
+            printf 'bulk-%s\n' "$i" > "bulk/file-${i}.txt"
+          done
+          printf 'security-sensitive-marker\n' > zzzz-sensitive/policy.txt
+          printf 'generated\n' > .large-pr-generated
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bulk zzzz-sensitive .large-pr-generated
+          git commit -m 'Generate 3100+ file truncation probe'
+          git push origin HEAD:bb-large-files-260912
+          python3 - <<'PY'
+          import json, os, urllib.request
+          sha=os.popen('git rev-parse HEAD').read().strip()
+          repo=os.environ['GITHUB_REPOSITORY']
+          token=os.environ['GH_TOKEN']
+          body=json.dumps({'name':'@mergifyio/summary','head_sha':sha,'status':'completed','conclusion':'success','output':{'title':'VM5 producer-collision probe','summary':'Controlled security test'}}).encode()
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/check-runs',data=body,method='POST',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'})
+          with urllib.request.urlopen(req) as r:
+              print('check-run-status', r.status)
+          PY
+
