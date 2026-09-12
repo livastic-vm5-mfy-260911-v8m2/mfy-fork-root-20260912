@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 ruleset normal-app negative
+    conditions:
+      - label = enhancement
+    actions:
+      merge:
+        method: merge
