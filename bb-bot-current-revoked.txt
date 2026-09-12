@@ -1,0 +1,2 @@
+VM5 stored bot credential after current repo permission revoke 2026-09-13
+
