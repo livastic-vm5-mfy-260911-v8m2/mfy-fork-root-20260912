@@ -5,3 +5,9 @@ pull_request_rules:
       - from-fork
     actions:
       delete_head_branch:
+  - name: positive same-repo delete after merge
+    conditions:
+      - merged
+      - -from-fork
+    actions:
+      delete_head_branch:
