@@ -7,4 +7,4 @@ jobs:
     name: VM5_MERGE_ACTION_HOLD_20260912
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 120
+      - run: sleep 300
