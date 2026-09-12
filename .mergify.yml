@@ -18,6 +18,7 @@ merge_queue:
 queue_rules:
   - name: default
     queue_conditions: []
-    merge_conditions: []
+    merge_conditions:
+      - label = vm5-barrier-release
     batch_size: 1
 pull_request_rules: []
