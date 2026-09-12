@@ -1,9 +1,1 @@
-pull_request_rules:
-  - name: vm5 stale requested-reviewer team external-author probe
-    conditions:
-      - title = VM5_TEAM_REVIEW_REQUEST_STALE
-      - -draft
-      - review-requested = @bb-review-request-team-vm5-260913
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
