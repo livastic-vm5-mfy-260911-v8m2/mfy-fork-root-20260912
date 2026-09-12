@@ -1,0 +1,21 @@
+name: VM5 Required Check Rerun Freshness
+
+on:
+  push:
+    branches:
+      - bb-rerun-freshness-260912
+
+jobs:
+  freshness:
+    name: vm5-rerun-freshness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Controlled rerun outcome
+        run: |
+          echo "attempt=${GITHUB_RUN_ATTEMPT}"
+          echo "sha=${GITHUB_SHA}"
+          if [ "${GITHUB_RUN_ATTEMPT}" -ge 2 ]; then
+            echo "controlled rerun failure"
+            exit 1
+          fi
+          echo "controlled first-attempt success"
