@@ -1,0 +1,15 @@
+name: VM5 Cross-Fork Deployment Provenance Probe
+
+on:
+  push:
+    branches:
+      - bb-crossfork-deployment-260912
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: vm5-crossfork-deployment-260912
+    steps:
+      - name: Fork-only deployment
+        run: echo "fork-only deployment for exact PR head"
+
