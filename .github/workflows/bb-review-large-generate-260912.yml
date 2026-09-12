@@ -1,0 +1,33 @@
+name: VM5 File-Scoped Reviewer Large Generator
+
+on:
+  push:
+    branches:
+      - bb-review-large-260912
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate 3000+ file reviewer probe
+        run: |
+          set -euo pipefail
+          if [ -f .review-large-generated ]; then
+            exit 0
+          fi
+          for f in bulk/*.txt; do
+            printf 'review-large-probe\n' >> "$f"
+          done
+          mkdir -p zzzz-review
+          printf 'file-scoped-reviewer-large-tail\n' > zzzz-review/large.txt
+          printf 'generated\n' > .review-large-generated
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bulk zzzz-review .review-large-generated
+          git commit -m 'Generate 3000+ file reviewer probe'
+          git push origin HEAD:bb-review-large-260912
