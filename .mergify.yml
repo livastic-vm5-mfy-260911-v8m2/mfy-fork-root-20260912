@@ -1,7 +1,0 @@
-pull_request_rules:
-  - name: VM5 thread resolution midflight probe
-    conditions:
-      - check-success = VM5_THREAD_HOLD_20260912
-    actions:
-      merge:
-        method: merge
