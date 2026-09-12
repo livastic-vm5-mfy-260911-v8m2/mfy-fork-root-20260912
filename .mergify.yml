@@ -1,10 +1,1 @@
-pull_request_rules:
-  - name: VM5 large PR truncation merge proof
-    conditions:
-      - base = main
-      - label = enhancement
-      - not: files~=^zzzz-sensitive/
-    actions:
-      merge:
-        method: merge
-
+pull_request_rules: []
