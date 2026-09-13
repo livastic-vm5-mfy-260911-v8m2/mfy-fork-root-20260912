@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: native required-review low-permission App test
+    conditions:
+      - base = vm5-lowperm-review-base-260914
+    actions:
+      merge:
+        method: merge
