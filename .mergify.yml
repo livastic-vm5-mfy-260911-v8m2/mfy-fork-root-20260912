@@ -1,7 +1,8 @@
 pull_request_rules:
-  - name: native required-review low-permission App test
+  - name: require one trusted review by documented permission semantics
     conditions:
       - base = vm5-lowperm-review-base-260914
+      - "#approved-reviews-by >= 1"
     actions:
       merge:
         method: merge
