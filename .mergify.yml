@@ -1,1 +1,11 @@
+merge_protections_settings:
+  reporting_method: check-runs
+  post_comment: false
+merge_protections:
+  - name: vm5-current-check-shadow
+    if:
+      - title = VM5_MP_CHECK_SHADOW
+    success_conditions:
+      - title = VM5_NEVER_MP_SUCCESS
+
 pull_request_rules: []
