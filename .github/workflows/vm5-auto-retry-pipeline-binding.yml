@@ -1,0 +1,23 @@
+name: VM5 AutoRetry Parent Binding
+run-name: VM5 auto-retry ${{ inputs.mode }}
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Controlled VM5 outcome
+        required: true
+        type: choice
+        options:
+          - success
+          - fail
+jobs:
+  shared-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: controlled result
+        shell: bash
+        run: |
+          echo "mode=${{ inputs.mode }}"
+          if [[ "${{ inputs.mode }}" == "fail" ]]; then
+            exit 1
+          fi
