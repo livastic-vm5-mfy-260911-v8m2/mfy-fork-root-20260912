@@ -1,9 +1,1 @@
-pull_request_rules:
-  - name: VM5 stale conflict B-Write protected merge
-    conditions:
-      - title = VM5_CONFLICT_WRITE_TRIGGER
-      - label = vm5-conflict-write-trigger
-      - -conflict
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
