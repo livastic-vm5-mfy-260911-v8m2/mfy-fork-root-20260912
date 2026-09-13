@@ -1,1 +1,20 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 lowpriv seed marker
+    conditions:
+      - sender = livastic-vm5-secondary-20260911
+      - author = livastic-vm5-secondary-20260911
+      - -label = vm5-sender-launder-260913
+    actions:
+      label:
+        add:
+          - vm5-sender-launder-260913
+  - name: VM5 detect generated-event sender privilege
+    conditions:
+      - label = vm5-sender-launder-260913
+      - -label = vm5-sender-launder-done-260913
+      - sender != livastic-vm5-secondary-20260911
+      - sender-permission >= write
+    actions:
+      label:
+        add:
+          - vm5-sender-launder-done-260913
