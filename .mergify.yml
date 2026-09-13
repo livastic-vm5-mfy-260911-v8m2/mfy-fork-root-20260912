@@ -1,16 +1,1 @@
-merge_protections_settings:
-  reporting_method: check-runs
-  post_comment: false
-merge_protections:
-  - name: vm5-old-base-permissive
-    if:
-      - base = vm5-mp-retarget-old-260914
-    success_conditions:
-      - title = VM5_MP_BASE_RETARGET
-  - name: vm5-main-strict
-    if:
-      - base = main
-    success_conditions:
-      - title = VM5_NEVER_MAIN_RETARGET_SUCCESS
-
 pull_request_rules: []
