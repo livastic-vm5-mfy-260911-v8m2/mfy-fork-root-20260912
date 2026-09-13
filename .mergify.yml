@@ -1,6 +1,7 @@
 queue_rules:
   - name: default
     queue_conditions: []
-    merge_conditions: []
+    merge_conditions:
+      - title = VM5_NEVER_QUEUE_CONFIG_SUCCESS
 
 pull_request_rules: []
