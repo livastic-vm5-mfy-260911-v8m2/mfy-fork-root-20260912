@@ -6,7 +6,7 @@ merge_protections:
     if:
       - base = vm5-mp-race-base-260914
     success_conditions:
-      - -draft
+      - label = vm5-never-protection
 pull_request_rules:
   - name: VM5 fire merge after policy update
     conditions:
