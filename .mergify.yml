@@ -1,9 +1,1 @@
-pull_request_rules:
-  - name: VM5 qualified deployment negative shadow trusted-main impact
-    conditions:
-      - title = VM5_DEPLOY_SHADOW_IMPACT
-      - label = vm5-deploy-shadow-impact-trigger
-      - -deployment-failure = @github-actions/vm5-deploy-shadow-impact2
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
