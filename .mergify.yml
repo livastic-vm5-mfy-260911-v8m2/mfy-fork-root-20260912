@@ -1,1 +1,13 @@
-pull_request_rules: []
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions: []
+
+pull_request_rules:
+  - name: VM5 dequeue reason-position atomicity probe
+    conditions:
+      - queue-dequeue-reason = PR_DEQUEUED
+      - queue-position = 0
+    actions:
+      comment:
+        message: VM5_QUEUE_POSITION_STALE_ON_DEQUEUE_260913
