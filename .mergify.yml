@@ -1,17 +1,1 @@
-pull_request_rules:
-  - name: VM5 external conflict runtime control
-    conditions:
-      - label = vm5-external-conflict-control
-    actions:
-      comment:
-        message: VM5_EXTERNAL_CONFLICT_CONTROL_OK
-  - name: VM5 external stale conflict trusted workflow proof
-    conditions:
-      - title = VM5_EXTERNAL_CONFLICT_TRIGGER
-      - -conflict
-    actions:
-      github_actions:
-        workflow:
-          dispatch:
-            - workflow: vm5-external-conflict-trusted.yml
-              ref: main
+pull_request_rules: []
