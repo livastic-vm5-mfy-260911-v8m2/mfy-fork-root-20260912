@@ -1,0 +1,19 @@
+name: VM5 external conflict trusted workflow proof
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write external-conflict marker
+        shell: bash
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          payload='{"message":"VM5 external conflict trusted workflow marker","content":"Vk01X0VYVEVSTkFMX0NPTkZMSUNUX1RSVVNURURfV09SS0ZMT1cK"}'
+          code=$(curl -sS -o /tmp/out.json -w '%{http_code}' -X PUT -H "Authorization: Bearer ${TOKEN}" -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' -H 'Content-Type: application/json' --data "${payload}" "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/vm5-external-conflict-marker.txt")
+          echo "MARKER_WRITE_HTTP=${code}"
+          test "${code}" = 201
