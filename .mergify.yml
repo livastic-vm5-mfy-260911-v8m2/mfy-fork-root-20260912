@@ -1,8 +1,1 @@
-pull_request_rules:
-  - name: require one trusted review by documented permission semantics
-    conditions:
-      - base = vm5-lowperm-review-base-260914
-      - "#approved-reviews-by >= 1"
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
