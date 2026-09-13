@@ -11,9 +11,10 @@ queue_rules:
     batch_max_wait_time: 0
     merge_method: merge
 pull_request_rules:
-  - name: echo external body
+  - name: echo external body as A
     conditions:
       - author = livastic-vm5-secondary-20260911
     actions:
       comment:
         message: "{{body}}"
+        bot_account: livastic-vm5-primary-20260911
