@@ -1,10 +1,1 @@
-pull_request_rules:
-  - name: VM5 qualified deployment failure shadow protected merge
-    conditions:
-      - title = VM5_DEPLOY_NEG_SHADOW
-      - -draft
-      - label = vm5-deploy-neg-shadow-trigger
-      - -deployment-failure = @github-actions/vm5-deploy-neg-shadow
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
