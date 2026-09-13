@@ -1,9 +1,1 @@
-pull_request_rules:
-  - name: VM5 deployment inactive stale-success protected merge
-    conditions:
-      - title = VM5_DEPLOY_INACTIVE_IMPACT
-      - label = vm5-inactive-impact-trigger
-      - deployment-success = vm5-inactive-impact-260914
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
