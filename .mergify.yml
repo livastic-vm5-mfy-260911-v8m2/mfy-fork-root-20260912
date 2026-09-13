@@ -1,1 +1,10 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 update then merge same-evaluation TOCTOU
+    conditions:
+      - title = VM5_MULTI_ACTION_TOCTOU
+      - label = vm5-multi-action-trigger
+      - check-success = vm5-multi-action-ci
+    actions:
+      update: {}
+      merge:
+        method: squash
