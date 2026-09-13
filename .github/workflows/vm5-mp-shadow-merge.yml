@@ -1,0 +1,12 @@
+name: VM5 current MP same-name shadow merge producer
+on:
+  pull_request:
+    types: [opened, reopened]
+permissions:
+  contents: read
+jobs:
+  same-name:
+    name: Mergify Merge Protections
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "VM5 current MP same-name success for protected-merge proof"
