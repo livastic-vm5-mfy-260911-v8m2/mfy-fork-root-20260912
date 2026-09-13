@@ -1,1 +1,8 @@
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions: []
+    batch_size: 2
+    batch_max_wait_time: 60
+    merge_method: merge
 pull_request_rules: []
