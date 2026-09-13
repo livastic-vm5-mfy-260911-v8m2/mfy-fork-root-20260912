@@ -6,7 +6,7 @@ merge_protections:
     if:
       - base = vm5-mp-ext-base-260914
     success_conditions:
-      - -closed
+      - label = vm5-never-external-protection
 pull_request_rules:
   - name: VM5 merge external PR when ready
     conditions:
