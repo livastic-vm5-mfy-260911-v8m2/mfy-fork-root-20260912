@@ -6,6 +6,6 @@ merge_protections:
     if:
       - title = VM5_MP_CONFIG_INVALIDATION
     success_conditions:
-      - title = VM5_MP_CONFIG_INVALIDATION
+      - title = VM5_NEVER_MP_CONFIG_INVALIDATION_SUCCESS
 
 pull_request_rules: []
