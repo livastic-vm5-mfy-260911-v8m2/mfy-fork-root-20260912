@@ -1,1 +1,17 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 low-priv sender seed label
+    conditions:
+      - sender = livastic-vm5-secondary-20260911
+      - author = livastic-vm5-secondary-20260911
+      - -label = vm5-sender-launder-260913
+    actions:
+      label:
+        add:
+          - vm5-sender-launder-260913
+  - name: VM5 detect sender privilege laundering
+    conditions:
+      - label = vm5-sender-launder-260913
+      - sender-permission >= admin
+    actions:
+      comment:
+        message: VM5_SENDER_PRIVILEGE_LAUNDERING_SENTINEL_260913
