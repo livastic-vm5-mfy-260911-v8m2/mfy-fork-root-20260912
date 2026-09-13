@@ -1,1 +1,14 @@
+merge_protections_settings:
+  reporting_method: check-runs
+  post_comment: false
+  auto_merge_conditions:
+    - label = vm5-auto-freeze-trigger
+
+merge_protections:
+  - name: vm5-auto-freeze-gate
+    if:
+      - title = VM5_AUTO_FREEZE_RACE
+    success_conditions:
+      - check-success = vm5-auto-freeze-gate
+
 pull_request_rules: []
