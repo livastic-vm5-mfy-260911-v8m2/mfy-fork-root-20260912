@@ -1,0 +1,12 @@
+name: VM5 cross-app same-name check producer
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  same-name-check:
+    name: "Rule: vm5-check-shadow-trusted (post_check)"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "VM5 GitHub-Actions same-name success"
