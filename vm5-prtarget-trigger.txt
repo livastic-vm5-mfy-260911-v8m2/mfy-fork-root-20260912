@@ -1,0 +1,1 @@
+VM5 external PR metadata trigger only; workflow does not checkout this code.
