@@ -1,17 +1,1 @@
-merge_protections_settings:
-  reporting_method: check-runs
-  post_comment: false
-merge_protections:
-  - name: VM5 external draft policy race
-    if:
-      - base = vm5-mp-ext-base-260914
-    success_conditions:
-      - label = vm5-never-external-protection
-pull_request_rules:
-  - name: VM5 merge external PR when ready
-    conditions:
-      - base = vm5-mp-ext-base-260914
-      - -draft
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
