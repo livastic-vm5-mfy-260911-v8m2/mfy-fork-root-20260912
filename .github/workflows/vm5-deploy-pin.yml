@@ -1,0 +1,36 @@
+name: VM5 Deployment App Pinning Proof
+on:
+  workflow_dispatch:
+    inputs:
+      target_sha:
+        required: true
+        type: string
+permissions:
+  contents: read
+  deployments: write
+jobs:
+  post-failed-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub-Actions deployment and failure status
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEPLOY_ID=$(gh api --method POST "/repos/$REPO/deployments" \
+            -H 'Accept: application/vnd.github+json' \
+            -f ref="$TARGET_SHA" \
+            -f environment='vm5-deploy-pin' \
+            -F auto_merge=false \
+            -f description='VM5 GitHub Actions app pinning failure proof' \
+            --jq '.id')
+          echo "DEPLOYMENT_ID=$DEPLOY_ID"
+          gh api --method POST "/repos/$REPO/deployments/$DEPLOY_ID/statuses" \
+            -H 'Accept: application/vnd.github+json' \
+            -f state='failure' \
+            -f environment='vm5-deploy-pin' \
+            -f description='VM5 intentional GitHub Actions failure' >/dev/null
+          echo 'DEPLOYMENT_STATUS=failure'
