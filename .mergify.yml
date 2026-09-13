@@ -1,1 +1,8 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: require one trusted review from B-owned restricted App
+    conditions:
+      - base = vm5-bowner-lowperm-base-260914
+      - "#approved-reviews-by >= 1"
+    actions:
+      merge:
+        method: merge
