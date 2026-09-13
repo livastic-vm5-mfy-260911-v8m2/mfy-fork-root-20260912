@@ -1,1 +1,10 @@
+queue_rules:
+  - name: default
+    queue_conditions:
+      - check-success = vm5-sep8-gate
+    merge_conditions:
+      - check-success = vm5-sep8-gate
+    update_method: merge
+    update_bot_account: livastic-vm5-primary-20260911
+    merge_method: merge
 pull_request_rules: []
