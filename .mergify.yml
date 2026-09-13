@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 base-ref stale Ready runtime consumer
+    conditions:
+      - title = VM5_BASE_REF_WEBHOOK_RACE
+      - base = vm5-base-ref-old-260913
+      - -draft
+    actions:
+      comment:
+        message: VM5_BASE_REF_STALE_ACTION_CONSUMED_260913
