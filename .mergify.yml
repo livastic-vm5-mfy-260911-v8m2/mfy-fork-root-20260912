@@ -1,1 +1,8 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: trust current old-slug GitHub App
+    conditions:
+      - author = vm5-stale-author-old-260914[bot]
+      - base = vm5-appid-base-260914
+    actions:
+      merge:
+        method: merge
