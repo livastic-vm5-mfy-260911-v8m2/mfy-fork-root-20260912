@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 deleted repository label stale protected merge
+    conditions:
+      - title = VM5_LABEL_DELETE_IMPACT
+      - label = vm5-label-delete-impact-260914
+      - check-success = vm5-label-delete-trigger
+    actions:
+      merge:
+        method: squash
