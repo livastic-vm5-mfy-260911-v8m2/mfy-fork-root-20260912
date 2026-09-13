@@ -1,1 +1,17 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 triage label event control
+    conditions:
+      - label = vm5-triage-conflict-control
+    actions:
+      comment:
+        message: VM5_TRIAGE_LABEL_EVENT_CONTROL_OK
+  - name: VM5 stale conflict Triage trusted workflow proof
+    conditions:
+      - label = vm5-triage-conflict-trigger
+      - -conflict
+    actions:
+      github_actions:
+        workflow:
+          dispatch:
+            - workflow: vm5-triage-conflict-trusted.yml
+              ref: main
