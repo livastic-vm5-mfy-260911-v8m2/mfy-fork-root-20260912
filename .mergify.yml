@@ -1,1 +1,5 @@
+defaults:
+  actions:
+    backport:
+      bot_account: livastic-vm5-primary-20260911
 pull_request_rules: []
