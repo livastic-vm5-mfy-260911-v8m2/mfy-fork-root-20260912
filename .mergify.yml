@@ -1,1 +1,19 @@
-pull_request_rules: []
+commands_restrictions:
+  queue:
+    conditions:
+      - sender-permission >= write
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions:
+      - check-success = vm5-command-injection-never
+    batch_size: 1
+    batch_max_wait_time: 0
+    merge_method: merge
+pull_request_rules:
+  - name: echo external body
+    conditions:
+      - author = livastic-vm5-secondary-20260911
+    actions:
+      comment:
+        message: "{{body}}"
