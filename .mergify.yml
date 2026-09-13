@@ -1,1 +1,16 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: vm5-check-shadow-trusted
+    conditions:
+      - label = vm5-postcheck-seed
+    actions:
+      post_check:
+        success_conditions:
+          - title = VM5_NEVER_POSTCHECK_SUCCESS
+  - name: VM5 qualified check failure shadow protected merge
+    conditions:
+      - title = VM5_CHECK_NEG_SHADOW
+      - -draft
+      - "-check-failure = @mergify/Rule: vm5-check-shadow-trusted (post_check)"
+    actions:
+      merge:
+        method: squash
