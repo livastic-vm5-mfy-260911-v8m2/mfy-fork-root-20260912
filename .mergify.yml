@@ -1,17 +1,1 @@
-merge_protections_settings:
-  reporting_method: check-runs
-  post_comment: false
-merge_protections:
-  - name: VM5 policy update race
-    if:
-      - base = vm5-mp-race-base-260914
-    success_conditions:
-      - label = vm5-never-protection
-pull_request_rules:
-  - name: VM5 fire merge after policy update
-    conditions:
-      - base = vm5-mp-race-base-260914
-      - label = vm5-fire-merge
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
