@@ -1,10 +1,1 @@
-merge_protections_settings:
-  reporting_method: check-runs
-  post_comment: false
-merge_protections:
-  - name: vm5-current-deployment-required
-    if:
-      - title = VM5_INACTIVE_NATIVE_REQUIRED_CHECK
-    success_conditions:
-      - deployment-success = vm5-inactive-native-260914
 pull_request_rules: []
