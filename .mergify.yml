@@ -1,11 +1,1 @@
-merge_protections_settings:
-  reporting_method: check-runs
-  post_comment: false
-merge_protections:
-  - name: vm5-config-invalidation
-    if:
-      - title = VM5_MP_CONFIG_INVALIDATION
-    success_conditions:
-      - title = VM5_NEVER_MP_CONFIG_INVALIDATION_SUCCESS
-
 pull_request_rules: []
