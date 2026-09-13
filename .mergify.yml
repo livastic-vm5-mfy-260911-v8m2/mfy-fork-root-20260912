@@ -6,7 +6,7 @@ queue_rules:
 pull_request_rules:
   - name: VM5 dequeue reason-position atomicity probe
     conditions:
-      - queue-dequeue-reason = PR_DEQUEUED
+      - queue-dequeue-reason = PR_MANUALLY_DEQUEUED
       - queue-position = 0
     actions:
       comment:
