@@ -1,0 +1,11 @@
+name: VM5 Qualified Deployment Status Creator
+on:
+  workflow_dispatch:
+jobs:
+  deploy-fail:
+    runs-on: ubuntu-latest
+    environment:
+      name: vm5-dep-status-creator-260914
+    steps:
+      - name: controlled deployment failure
+        run: exit 1
