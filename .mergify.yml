@@ -1,11 +1,1 @@
-queue_rules:
-  - name: default
-    queue_conditions: []
-    merge_conditions:
-      - check-success = vm5-retry-gate-a
-      - check-success = vm5-retry-gate-b
-    batch_size: 1
-    batch_max_wait_time: 0
-    max_checks_retries: 1
-    merge_method: merge
 pull_request_rules: []
