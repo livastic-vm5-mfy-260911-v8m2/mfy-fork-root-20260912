@@ -1,8 +1,1 @@
-pull_request_rules:
-  - name: VM5 merge bot current-permission revocation discriminator
-    conditions:
-      - title = VM5_MERGE_BOT_CURRENT_PERMISSION_20260915
-    actions:
-      merge:
-        method: squash
-        merge_bot_account: livastic-vm5-secondary-20260911
+pull_request_rules: []
