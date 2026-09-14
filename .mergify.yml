@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 ordered-negation reviewer pattern probe
+    conditions:
+      - base = vm5-negpattern-base-260914
+    actions:
+      merge:
+        method: merge
