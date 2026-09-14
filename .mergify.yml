@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 Read-author same-repo squash credential boundary
+    conditions:
+      - title = VM5_READ_AUTHOR_SQUASH_20260915
+    actions:
+      squash:
+        commit_message: all-commits
