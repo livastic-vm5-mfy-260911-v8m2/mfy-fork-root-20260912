@@ -1,0 +1,1 @@
+VM5 merge_bot_account current-permission revocation canary
