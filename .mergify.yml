@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 revoked future-SHA scope must not authorize merge
+    conditions:
+      - scope = vm5-future-scope-merge-20260915
+    actions:
+      merge:
+        method: squash
