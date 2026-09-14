@@ -1,7 +1,0 @@
-scopes:
-  source:
-    files:
-      security:
-        include:
-          - zzzz-sensitive/**
-pull_request_rules: []
