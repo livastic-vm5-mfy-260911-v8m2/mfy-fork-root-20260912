@@ -1,1 +1,8 @@
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions:
+      - check-success = @github-actions/vm5-stack-cascade-gate
+      - check-success = vm5-stack-never-merge
+    batch_size: 1
 pull_request_rules: []
