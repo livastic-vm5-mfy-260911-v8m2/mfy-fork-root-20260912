@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 review bot GitHub authorization revocation discriminator
+    conditions:
+      - title ~= ^VM5_REVIEW_BOT_GITHUB_AUTH_REVOKE_(POSITIVE|TREATMENT)_20260915$
+    actions:
+      review:
+        type: APPROVE
+        message: VM5 controlled review bot authorization freshness proof
+        bot_account: livastic-vm5-secondary-20260911
