@@ -1,7 +1,1 @@
-pull_request_rules:
-  - name: VM5 revoked future external-fork scope must not authorize merge
-    conditions:
-      - scope = vm5-future-fork-active-merge-20260915
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
