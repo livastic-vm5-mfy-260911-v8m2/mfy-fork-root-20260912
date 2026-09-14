@@ -1,7 +1,6 @@
 pull_request_rules:
-  - name: VM5 Read-author clean2 same-repo squash boundary
+  - name: VM5 Read-author same-repo rebase credential boundary
     conditions:
-      - title = VM5_READ_AUTHOR_SQUASH_CLEAN2_20260915
+      - title = VM5_READ_AUTHOR_REBASE_20260915
     actions:
-      squash:
-        commit_message: all-commits
+      rebase: {}
