@@ -1,7 +1,1 @@
-pull_request_rules:
-  - name: VM5 percent-encoded wrong-target delete-head proof
-    conditions:
-      - closed
-      - title = VM5_PERCENT_REF_DELETE_HEAD_20260915
-    actions:
-      delete_head_branch: {}
+pull_request_rules: []
