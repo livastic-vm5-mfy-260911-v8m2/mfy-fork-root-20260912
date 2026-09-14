@@ -1,7 +1,1 @@
-pull_request_rules:
-  - name: VM5 percent ref delete targeting probe
-    conditions:
-      - closed
-      - title = VM5_PERCENT_DELETE_HEAD
-    actions:
-      delete_head_branch: {}
+pull_request_rules: []
