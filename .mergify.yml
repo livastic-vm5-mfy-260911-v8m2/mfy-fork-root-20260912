@@ -1,9 +1,1 @@
-pull_request_rules:
-  - name: VM5 base rename stale policy discriminator
-    conditions:
-      - base = vm5-base-rename-old-20260915
-      - title = VM5_BASE_RENAME_POLICY_20260915
-      - label = vm5-base-rename-release
-    actions:
-      merge:
-        method: squash
+pull_request_rules: []
