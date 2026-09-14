@@ -1,9 +1,1 @@
-pull_request_rules:
-  - name: VM5 trusted author recycled-login reproduction
-    conditions:
-      - base = vm5-author2-base-260914
-      - author = livastic-vm5-primary-20260911
-      - check-success = vm5-author2-native-gate
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
