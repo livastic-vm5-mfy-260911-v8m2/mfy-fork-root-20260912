@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 native protection replacement test
+    conditions:
+      - base = vm5-protrepl-base-260914
+    actions:
+      merge:
+        method: merge
