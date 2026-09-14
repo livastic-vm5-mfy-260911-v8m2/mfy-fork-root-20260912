@@ -1,7 +1,1 @@
-pull_request_rules:
-  - name: VM5 file-pattern ruleset translation probe
-    conditions:
-      - base = vm5-filepattern-base-260914
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
