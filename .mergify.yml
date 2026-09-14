@@ -1,1 +1,8 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 timer stale-head wrong-target delete discriminator
+    conditions:
+      - head = vm5-head-timer-old-20260915
+      - title = VM5_TIMER_HEAD_RENAME_DELETE_20260915
+      - current-datetime >= 2026-09-14T20:59:20Z
+    actions:
+      delete_head_branch: {}
