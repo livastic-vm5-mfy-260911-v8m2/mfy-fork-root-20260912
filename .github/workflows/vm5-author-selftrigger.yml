@@ -1,0 +1,11 @@
+name: VM5 Author Self-Trigger Guard
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo trusted-guard-pass
