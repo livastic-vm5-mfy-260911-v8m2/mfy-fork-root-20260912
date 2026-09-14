@@ -1,4 +1,7 @@
-queue_rules:
-  - name: default
-    queue_conditions: []
-    merge_conditions: []
+pull_request_rules:
+  - name: VM5 Read-author clean same-repo squash boundary
+    conditions:
+      - title = VM5_READ_AUTHOR_SQUASH_CLEAN_20260915
+    actions:
+      squash:
+        commit_message: all-commits
