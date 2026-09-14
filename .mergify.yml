@@ -1,7 +1,1 @@
-merge_protections:
-  - name: VM5 unlocked freshness
-    if:
-      - base = main
-    success_conditions:
-      - "-locked"
 pull_request_rules: []
