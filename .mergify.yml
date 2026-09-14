@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 timer team-membership revocation discriminator
+    conditions:
+      - author = @vm5-timer-authz-260915
+      - title = VM5_TEAM_TIMER_REVOKE_20260915
+      - current-datetime >= 2026-09-14T20:37:11Z
+    actions:
+      merge:
+        method: squash
