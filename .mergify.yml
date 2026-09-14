@@ -1,1 +1,13 @@
+scopes:
+  source:
+    files:
+      security:
+        include:
+          - critical/**
+      docs:
+        include:
+          - docs/**
+  barrier_files:
+    include:
+      - .mergify.yml
 pull_request_rules: []
