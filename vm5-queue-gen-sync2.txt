@@ -1,0 +1,1 @@
+VM5 queue generation worker wake after enabling workflow automation
