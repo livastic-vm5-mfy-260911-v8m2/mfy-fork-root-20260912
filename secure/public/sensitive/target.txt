@@ -1,1 +1,2 @@
 ordered negation protected baseline 1789358769302095340
+directory-only gitignore pattern change 1789358914084358116
