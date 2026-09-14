@@ -1,7 +1,1 @@
-merge_protections:
-  - name: VM5 slash branch review parity
-    if:
-      - base = release/vm5-slash-protection-20260914
-    success_conditions:
-      - github-review-approved
 pull_request_rules: []
