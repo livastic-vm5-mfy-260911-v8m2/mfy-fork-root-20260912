@@ -1,16 +1,1 @@
-merge_queue:
-  max_parallel_checks: 1
-queue_rules:
-  - name: vm5-policy-gen
-    queue_conditions:
-      - title = VM5_QUEUE_RULE_GENERATION_20260915
-    merge_conditions:
-      - author = livastic-vm5-primary-20260911
-      - label = vm5-release
-pull_request_rules:
-  - name: VM5 enqueue generation probe
-    conditions:
-      - title = VM5_QUEUE_RULE_GENERATION_20260915
-    actions:
-      queue:
-        name: vm5-policy-gen
+pull_request_rules: []
