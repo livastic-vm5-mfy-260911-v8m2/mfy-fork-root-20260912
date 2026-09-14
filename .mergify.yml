@@ -1,12 +1,1 @@
-scopes:
-  source:
-    manual: null
-queue_rules:
-  - name: default
-    queue_conditions: []
-    merge_conditions:
-      - check-success = vm5-direct-ci
-    batch_size: 1
-    batch_max_wait_time: 0
-    merge_method: merge
 pull_request_rules: []
