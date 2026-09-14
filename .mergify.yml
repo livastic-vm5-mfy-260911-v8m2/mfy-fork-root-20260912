@@ -1,6 +1,6 @@
 scopes:
   source:
-    manual: {}
+    manual: null
 queue_rules:
   - name: default
     queue_conditions: []
