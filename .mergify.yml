@@ -1,6 +1,1 @@
-pull_request_rules:
-  - name: VM5 Read-author same-repo rebase credential boundary
-    conditions:
-      - title = VM5_READ_AUTHOR_REBASE_20260915
-    actions:
-      rebase: {}
+pull_request_rules: []
