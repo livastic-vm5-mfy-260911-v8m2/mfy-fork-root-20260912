@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 timer base-rename finalizer discriminator
+    conditions:
+      - base = vm5-timer-base-old-20260915
+      - title = VM5_TIMER_BASE_RENAME_20260915
+      - current-datetime >= 2026-09-14T20:26:34Z
+    actions:
+      merge:
+        method: squash
