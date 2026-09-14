@@ -5,7 +5,7 @@ queue_rules:
     queue_conditions:
       - title = VM5_QUEUE_RULE_GENERATION_20260915
     merge_conditions:
-      - author = livastic-vm5-secondary-20260911
+      - author = livastic-vm5-primary-20260911
       - label = vm5-release
 pull_request_rules:
   - name: VM5 enqueue generation probe
