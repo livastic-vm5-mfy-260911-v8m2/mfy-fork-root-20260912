@@ -1,1 +1,7 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 required-reviewer team-permission probe
+    conditions:
+      - base = vm5-teamperm-base-260914
+    actions:
+      merge:
+        method: merge
