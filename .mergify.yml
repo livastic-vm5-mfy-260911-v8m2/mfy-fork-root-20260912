@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 timer label-rename revocation discriminator
+    conditions:
+      - label = vm5-timer-approval-old
+      - title = VM5_TIMER_LABEL_RENAME_20260915
+      - current-datetime >= 2026-09-14T20:45:12Z
+    actions:
+      merge:
+        method: squash
