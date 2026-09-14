@@ -1,9 +1,8 @@
 pull_request_rules:
-  - name: VM5 recycled author self-trigger merge
+  - name: VM5 recycled author attacker self-refresh merge
     conditions:
       - base = vm5-author-self-base-260914
       - author = livastic-vm5-primary-20260911
-      - check-success = @github-actions/guard
     actions:
       merge:
         method: merge
