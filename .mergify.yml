@@ -5,3 +5,4 @@ pull_request_rules:
     actions:
       squash:
         commit_message: all-commits
+# vm5 owner-created victim commit 1
