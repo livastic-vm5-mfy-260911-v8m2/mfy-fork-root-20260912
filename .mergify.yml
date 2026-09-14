@@ -1,9 +1,13 @@
-pull_request_rules:
-  - name: VM5 trusted author recycled-login reproduction
+commands_restrictions:
+  queue:
     conditions:
-      - base = vm5-author2-base-260914
-      - author = livastic-vm5-primary-20260911
-      - check-success = vm5-author2-native-gate
-    actions:
-      merge:
-        method: merge
+      - sender-permission >= write
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions:
+      - check-success = vm5-mincmd-never
+    batch_size: 1
+    batch_max_wait_time: 0
+    merge_method: merge
+pull_request_rules: []
