@@ -3,7 +3,7 @@ name: vm5-time-finalizer
 on:
   pull_request:
     branches:
-      - vm5-time-finalizer-base-260914
+      - livastic-vm5-primary-20260911-patch-2
 
 permissions:
   contents: read
@@ -17,6 +17,5 @@ jobs:
       - name: Hold speculative check past time deadline
         run: |
           echo "gate_started=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          sleep 300
+          sleep 420
           echo "gate_finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-
