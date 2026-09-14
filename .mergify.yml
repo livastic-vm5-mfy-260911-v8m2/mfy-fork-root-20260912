@@ -1,1 +1,10 @@
+queue_rules:
+  - name: default
+    queue_conditions:
+      - current-datetime < 2026-09-14T06:54:04Z
+    merge_conditions:
+      - check-success = vm5-time-finalizer-gate
+    batch_size: 1
+    batch_max_wait_time: 0
+    merge_method: merge
 pull_request_rules: []
