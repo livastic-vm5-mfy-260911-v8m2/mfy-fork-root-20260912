@@ -1,0 +1,22 @@
+name: vm5-time-finalizer
+
+on:
+  pull_request:
+    branches:
+      - vm5-time-finalizer-base-260914
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: vm5-time-finalizer-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Hold speculative check past time deadline
+        run: |
+          echo "gate_started=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          sleep 300
+          echo "gate_finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
