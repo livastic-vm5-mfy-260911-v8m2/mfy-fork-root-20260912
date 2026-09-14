@@ -1,0 +1,45 @@
+name: VM5 Scope Policy Self-Edit POC
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  detect-scopes:
+    runs-on: ubuntu-24.04
+    outputs:
+      security: ${{ fromJSON(steps.scopes.outputs.scopes).security }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Detect scopes
+        id: scopes
+        uses: Mergifyio/gha-mergify-ci@v25
+        with:
+          action: scopes
+
+  security-test:
+    needs: detect-scopes
+    if: ${{ needs.detect-scopes.outputs.security == 'true' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Intentional security failure
+        run: |
+          echo "VM5_SECURITY_JOB_RAN=1"
+          exit 1
+
+  ci-gate:
+    if: ${{ !cancelled() }}
+    needs:
+      - detect-scopes
+      - security-test
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Report status
+        uses: Mergifyio/gha-mergify-ci@v25
+        with:
+          action: wait-jobs
+          jobs: ${{ toJSON(needs) }}
