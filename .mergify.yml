@@ -1,8 +1,1 @@
-pull_request_rules:
-  - name: VM5 merge rule revocation race
-    conditions:
-      - base = vm5-warule-base-260914
-      - check-success = vm5-warule-gate
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
