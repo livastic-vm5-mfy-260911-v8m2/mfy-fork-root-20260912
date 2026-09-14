@@ -1,0 +1,21 @@
+name: vm5-current-datetime-finalizer
+
+on:
+  pull_request:
+    branches:
+      - vm5-time-finalizer-base-maincfg-260914
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: vm5-time-finalizer-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Hold check beyond queue time deadline
+        run: |
+          echo "gate_started=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          sleep 360
+          echo "gate_finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
