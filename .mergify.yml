@@ -1,1 +1,8 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM5 copy action external-fork trust promotion discriminator
+    conditions:
+      - title = VM5_COPY_TRUST_PROMOTION_20260915
+    actions:
+      copy:
+        branches:
+          - vm5-copy-target-20260915
