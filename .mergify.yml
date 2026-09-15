@@ -20,7 +20,7 @@ pull_request_rules:
     conditions:
       - title = VM5_TIMER_AUTHOR_TEAM_REVOKE_20260915
       - author=@bb-timer-author-trust-vm5-260915
-      - current-datetime >= 2026-09-15T01:25:18Z
+      - current-datetime >= 2026-09-15T01:28:15Z
     actions:
       merge:
         method: squash
