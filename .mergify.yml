@@ -6,6 +6,7 @@ pull_request_rules:
       - "#commits >= 2"
     actions:
       squash:
+        bot_account: livastic-vm5-primary-20260911
         commit_message: title+body
   - name: VM5 post-squash merge must require fresh approval
     conditions:
