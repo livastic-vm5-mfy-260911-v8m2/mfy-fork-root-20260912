@@ -1,8 +1,1 @@
-pull_request_rules:
-  - name: VM5 squash bot current-permission discriminator
-    conditions:
-      - title = VM5_SQUASH_BOT_CURRENT_PERMISSION_20260915
-    actions:
-      squash:
-        bot_account: livastic-vm5-secondary-20260911
-        commit_message: title+body
+pull_request_rules: []
