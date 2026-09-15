@@ -21,13 +21,11 @@ jobs:
           gh_code=$(curl -sS -o "$tmp/gh.json" -w '%{http_code}' -H "Authorization: Bearer $VM5_GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' "https://api.github.com/repos/$owner/$private_repo")
           echo "VM5_PRIVATE_GITHUB_STATUS=$gh_code"
           for spec in 'jobs_count|jobs_count' 'job_names|jobs/names' 'jobs|jobs?per_page=20' 'pipelines|jobs/pipeline_names' 'quarantine_names|quarantined-tests/test_names'; do
-            label=${spec%%|*}; ep=${spec#*|}; out="$tmp/$label.json"
+            label=${spec%%|*}
+            ep=${spec#*|}
+            out="$tmp/$label.json"
             code=$(curl -sS -o "$out" -w '%{http_code}' -H "Authorization: Bearer $VM5_GITHUB_TOKEN" -H 'Accept: application/json' "https://api.mergify.com/v1/ci/$owner/$ep")
-            hit=$(python3 - "$out" "$marker" <<'PY2'
-import sys
-s=open(sys.argv[1],errors='ignore').read(); print(1 if sys.argv[2] in s else 0)
-PY2
-)
+            if grep -Fq "$marker" "$out"; then hit=1; else hit=0; fi
             bytes=$(wc -c < "$out" | tr -d ' ')
             echo "VM5_${label^^}_STATUS=$code BYTES=$bytes PRIVATE_MARKER=$hit"
           done
