@@ -2,6 +2,7 @@ pull_request_rules:
   - name: VM5 squash before stale-review merge discriminator
     conditions:
       - title = VM5_SQUASH_REVIEW_FRESHNESS_20260915
+      - approved-reviews-by = livastic-vm5-primary-20260911
       - "#commits >= 2"
     actions:
       squash:
