@@ -1,0 +1,20 @@
+name: VM5 Terminal State Gate
+on:
+  pull_request:
+    branches:
+      - vm5-check-terminal-base-260915
+jobs:
+  vm5-terminal-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Same-head terminal-state discriminator
+        shell: bash
+        run: |
+          echo "VM5_TERMINAL_STATE attempt=$GITHUB_RUN_ATTEMPT"
+          if [ "$GITHUB_RUN_ATTEMPT" = "1" ]; then
+            echo "first attempt succeeds"
+            exit 0
+          fi
+          echo "rerun waits for cancel/timeout"
+          sleep 120
