@@ -1,0 +1,16 @@
+pull_request_rules:
+  - name: vm5 reverse-fork delete upstream head
+    conditions:
+      - merged
+      - from-fork
+      - title = VM5_REVERSE_FORK_DELETE_HEAD
+    actions:
+      delete_head_branch:
+
+  - name: vm5 same-repo delete liveness control
+    conditions:
+      - merged
+      - -from-fork
+      - title = VM5_DELETE_HEAD_LIVENESS
+    actions:
+      delete_head_branch:
