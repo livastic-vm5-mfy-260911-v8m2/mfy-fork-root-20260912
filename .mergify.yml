@@ -15,22 +15,3 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-  - name: VM5 lowpriv seed marker 260919
-    conditions:
-      - sender = livastic-vm5-secondary-20260911
-      - author = livastic-vm5-secondary-20260911
-      - -label = vm5-sender-seed-260919
-    actions:
-      label:
-        add:
-          - vm5-sender-seed-260919
-  - name: VM5 detect generated-event sender privilege 260919
-    conditions:
-      - label = vm5-sender-seed-260919
-      - -label = vm5-sender-sentinel-260919
-      - sender != livastic-vm5-secondary-20260911
-      - sender-permission >= write
-    actions:
-      label:
-        add:
-          - vm5-sender-sentinel-260919
